@@ -1,28 +1,39 @@
 <!doctype html>
-<html>
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Results</title>
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=1" />
 </head>
 <body>
   <div class="container">
     <a href="index.html">← Home</a>
     <h1>Results</h1>
 
-    <p>Paste the 8 submitted links here (one per line):</p>
-    <textarea id="links" placeholder="paste links..."></textarea>
-    <div class="buttons">
-      <button id="compute">Compute schedules</button>
+    <div id="error" class="error" style="display:none;"></div>
+
+    <div class="card">
+      <div id="status" class="small">Cargando…</div>
+      <div class="buttons">
+        <button id="compute">Compute (General + A + B)</button>
+        <button id="reset">Reset votes (este navegador)</button>
+      </div>
+      <div class="small">
+        Para importar: abrí los links que te mandan. Se guardan automáticamente en este navegador.
+      </div>
     </div>
 
     <div id="out"></div>
   </div>
 
-<script src="assets/app.js?v=200"></script>
+  <script src="assets/app.js?v=1"></script>
   <script>
-    CosquinApp.initResultsPage();
+    FestivalApp.initResultsPage();
+  </script>
+</body>
+</html>
+
   </script>
 </body>
 </html>
