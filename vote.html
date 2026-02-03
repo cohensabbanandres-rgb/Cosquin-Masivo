@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosquín Rock – Vote</title>
+  <link rel="stylesheet" href="assets/styles.css?v=999" />
+</head>
+<body>
+
+  <div class="container">
+    <a href="index.html">← Home</a>
+    <h1 id="title">Loading…</h1>
+
+    <div id="error" class="error" style="display:none;"></div>
+
+    <!-- Grid -->
+    <div id="grid" class="card">Cargando grilla…</div>
+
+    <div class="buttons">
+      <button id="submit">Submit (Lock + Generate Link)</button>
+      <button id="copy" style="display:none;">Copy Share Link</button>
+    </div>
+
+    <textarea id="share" readonly style="display:none;"></textarea>
+  </div>
+
+  <!-- Carga del JS -->
+  <script src="assets/app.js?v=999"></script>
+
+  <!-- Bootstrap seguro -->
+  <script>
+    const err = document.getElementById("error");
+
+    // Mostrar errores JS en pantalla
+    window.addEventListener("error", (e) => {
+      err.style.display = "block";
+      err.textContent = "JS ERROR: " + (e.message || e);
+    });
+
+    // Esperar a que app.js esté evaluado
+    setTimeout(() => {
+      if (!window.CosquinApp || typeof window.CosquinApp.initVotePage !== "function") {
+        err.style.display = "block";
+        err.textContent =
+          "ERROR: window.CosquinApp no está definido o initVotePage no existe. Revisá assets/app.js.";
+        return;
+      }
+
+      // ✅ Arranque correcto
+      window.CosquinApp.initVotePage();
+    }, 0);
+  </script>
+
+</body>
+</html>

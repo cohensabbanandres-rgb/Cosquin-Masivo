@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cosquín Planner</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="cosquin-logo.jpg" alt="Cosquin Rock" style="max-width:340px; width:100%; margin: 8px 0 14px; display:block;">
+    <h1>Cosquín Rock Planner</h1>
+
+    <label>Your name</label>
+    <select id="name">
+      <option value="">Select…</option>
+      <option>Andy</option><option>Brian</option><option>Cori</option><option>Gon</option>
+      <option>Marcos</option><option>Matu</option><option>Nacho</option><option>Fran</option>
+    </select>
+
+    <div class="buttons">
+      <button id="day14">Vote – Day 14</button>
+      <button id="day15">Vote – Day 15</button>
+      <button id="results">Results</button>
+    </div>
+
+    <p class="hint">
+      After voting, you’ll get a share link. Send it in the WhatsApp group.
+      Then Andy pastes all 8 links into Results.
+    </p>
+  </div>
+
+  <script>
+    function go(path){
+      const name = document.getElementById('name').value.trim();
+      if (!path.includes('results') && !name) {
+        alert("Pick your name first.");
+        return;
+      }
+      location.href = path + (path.includes('?') ? '&' : '?') + "name=" + encodeURIComponent(name);
+    }
+    document.getElementById('day14').onclick = () => go("vote.html?day=14");
+    document.getElementById('day15').onclick = () => go("vote.html?day=15");
+    document.getElementById('results').onclick = () => location.href = "results.html";
+  </script>
+</body>
+</html>
+
